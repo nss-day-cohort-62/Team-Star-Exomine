@@ -33,28 +33,33 @@ const database = {
         { id: 6, name: "Dublin", active: true }
     ],
     facilityMinerals: [
-        { id: 1, facilityId: 1, mineralId: 1 },
-        { id: 2, facilityId: 1, mineralId: 2 },
-        { id: 3, facilityId: 2, mineralId: 3 },
-        { id: 4, facilityId: 2, mineralId: 4 },
-        { id: 5, facilityId: 2, mineralId: 5 },
-        { id: 6, facilityId: 3, mineralId: 1 },
-        { id: 7, facilityId: 4, mineralId: 1 },
-        { id: 8, facilityId: 4, mineralId: 4 },
-        { id: 9, facilityId: 4, mineralId: 5 },
-        { id: 10, facilityId: 5, mineralId: 3 },
-        { id: 11, facilityId: 6, mineralId: 2 },
-        { id: 12, facilityId: 6, mineralId: 5 }
+        { id: 1, facilityId: 1, mineralId: 1, quantity: 300 },
+        { id: 2, facilityId: 1, mineralId: 2, quantity: 230 },
+        { id: 3, facilityId: 2, mineralId: 3, quantity: 500 },
+        { id: 4, facilityId: 2, mineralId: 4, quantity: 120 },
+        { id: 5, facilityId: 2, mineralId: 5, quantity: 90 },
+        { id: 6, facilityId: 3, mineralId: 1, quantity: 210 },
+        { id: 7, facilityId: 4, mineralId: 1, quantity: 700 },
+        { id: 8, facilityId: 4, mineralId: 4, quantity: 540 },
+        { id: 9, facilityId: 4, mineralId: 5, quantity: 330 },
+        { id: 10, facilityId: 5, mineralId: 3, quantity: 415 },
+        { id: 11, facilityId: 6, mineralId: 2, quantity: 100 },
+        { id: 12, facilityId: 6, mineralId: 5, quantity: 40 }
     ],
     orders: [
         { id: 1, mineralId: 1, governorId: 4, colonyId: 1, facilityId: 1, timestamp: 1614659931693 },
     ],
-    orderBuilder: {}
+    
 }
 
 export const setFacility = (facilityId) => {
     database.transientState.selectedFacility = facilityId
     document.dispatchEvent(new CustomEvent("stateChanged"))
+}
+
+export const setGovernor = (governorId) => {
+    database.transientState.selectedGovernor = governorId
+    document.dispatchEvent(new CustomEvent('stateChanged'))
 }
 
 export const getFacilities = () => {
@@ -83,4 +88,5 @@ export const getFacilityMinerals = () => {
 export const getColonies = () => {
     return database.colonies.map(colony => ({ ...colony }))
 }
+
 

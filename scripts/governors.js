@@ -1,7 +1,17 @@
-import { getGovernors } from "./database.js";
+import { getGovernors, setGovernor } from "./database.js";
 
 const governors = getGovernors();
 
+document.addEventListener(
+    'change',
+    (changeEvent) => {
+        if (changeEvent.target.id === 'governorResource'){
+            let chooseOption = changeEvent.target.value
+            chooseOption = parseInt(chooseOption)
+            setGovernor(chooseOption)
+        }
+    }
+)
 
 export const governorSelection = () => {
     let html = `<h4>Choose a Governor</h4><select class="resource" id="governorResource">
