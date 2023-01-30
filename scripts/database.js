@@ -1,5 +1,6 @@
 const database = {
     transientState: {},
+    
     governors: [
         { id: 1, name: "Wesley Hughes", colonyId: 4, active: true },
         { id: 2, name: "Stephen Byard", colonyId: 2, active: false },
@@ -93,3 +94,19 @@ export const getTransientState = () => {
     return database.transientState
 }
 
+export const addCustomOrder = () => {
+    const newOrder = {...database.transientState}
+    const lastIndex = database.orders.length - 1
+    newOrder.id = database.orders[lastIndex].id + 1
+
+    newOrder.timestamp = Date.now()
+    database.orders.push(newOrder)
+
+    database.transientState = {}
+   // document.dispatchEvent(new CustomEvent('stateChanged'))
+}
+
+export const setMineral = (mineralId) => {
+    database.transientState.selectedMineral = mineralId
+    document.dispatchEvent(new CustomEvent('stateChanged'))
+}

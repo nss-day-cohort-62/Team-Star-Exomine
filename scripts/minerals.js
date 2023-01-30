@@ -1,4 +1,17 @@
-import { getFacilityMinerals, getFacilities, getMinerals, getTransientState } from "./database.js";
+import { getFacilityMinerals, getFacilities, getMinerals, getTransientState, setMineral } from "./database.js";
+
+document.addEventListener(
+    'change',
+    (changeEvent) => {
+        if (changeEvent.target.id === 'mineral_resource'){
+            let chooseOption = changeEvent.target.value
+            chooseOption = parseInt(chooseOption)
+            setMineral(chooseOption)
+        }
+    }
+)
+
+
 
 const minerals = getMinerals()
 const facilityMinerals = getFacilityMinerals()
@@ -32,8 +45,12 @@ export const availableMinerals = () => {
     for (const mineral of minerals) {
         for (const matchedMineralFacility of matchedMineralFacilities)
             if (mineral.id === matchedMineralFacility.mineralId) {
+            let checked = ""
+            if (transientState.selectedMineral === mineral.id) {
+            checked = "checked"
+        }
                 html += `<li>
-                        <input type="radio" name="mineral" value="${mineral.id}"/>${mineral.name}
+                        <input type="radio" name="mineral" id="mineral_resource" value="${mineral.id}" ${checked} /> ${parseInt(matchedMineralFacility.quantity)} tons of ${mineral.name} available
                         </li>`    
             }
     }

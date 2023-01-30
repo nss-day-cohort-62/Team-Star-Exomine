@@ -1,6 +1,16 @@
 import { governorSelection } from "./governors.js"
 import { facilitySelection } from "./facilities.js"
 import { availableMinerals } from "./minerals.js"
+import { addCustomOrder } from "./database.js"
+
+document.addEventListener(
+    "click",
+    (event) => { 
+        if (event.target.id === 'orderButton') {
+        addCustomOrder()
+    }
+} 
+)
 
 export const exomine = () => {
     return `
