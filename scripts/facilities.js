@@ -1,4 +1,4 @@
-import { getFacilities, setFacility } from "./database.js";
+import { getFacilities, setFacility, getTransientState } from "./database.js";
 
 const facilities = getFacilities();
 
@@ -24,10 +24,15 @@ let activeFacilities = []
 
 
 export const facilitySelection = () => {
+    const transientState = getTransientState()
     let html = `<h4>Choose a Facility</h4><select class="facility" id="facilityResource">
     <option value="0">Choose a Facility</option>\n`
     for (const facility of activeFacilities) {
-        html += `<option value="${facility.id}">${facility.name}</option>`
+        let selected = ""
+        if (transientState.selectedFacility === facility.id) {
+            selected= "selected"
+        }
+        html += `<option value="${facility.id}" ${selected}>${facility.name}</option>`
     }
     html += `</select>`
     return html
