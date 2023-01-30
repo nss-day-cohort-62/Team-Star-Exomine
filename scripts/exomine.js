@@ -1,5 +1,6 @@
 import { governorSelection } from "./governors.js"
 import { facilitySelection } from "./facilities.js"
+import { availableMinerals } from "./minerals.js"
 
 export const exomine = () => {
     return `
@@ -8,7 +9,7 @@ export const exomine = () => {
         <section class="filters">
             ${governorSelection()}
         </section>
-    <article class="filterAndColonyStatus">
+    <article class="filterFacility">
         <section class="filters">
             ${facilitySelection()}
         </section>
@@ -18,7 +19,7 @@ export const exomine = () => {
     </article>
     <article class="mineralsAndCart">
         <section id="mineralSelection">
-        
+        ${availableMinerals()}
         </section>
         <section id="cart">
             <h3>Space Cart</h3>

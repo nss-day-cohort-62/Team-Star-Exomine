@@ -89,4 +89,7 @@ export const getColonies = () => {
     return database.colonies.map(colony => ({ ...colony }))
 }
 
+export const getTransientState = () => {
+    return database.transientState
+}
 
