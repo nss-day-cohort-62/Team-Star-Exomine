@@ -57,5 +57,3 @@ export const availableMinerals = () => {
     html += `</ul>`
     return html
 }
-
-
