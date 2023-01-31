@@ -9,7 +9,7 @@ import {
 } from "./database.js";
 
 const minerals = getMinerals();
-const facilityMinerals = getFacilityMinerals();
+
 const facilities = getFacilities();
 const colonies = getColonies()
 
@@ -177,7 +177,5 @@ export const displayOrder = () => {
 
 
 
-export const quantityReduction = () => {
-  const transientState = transientState()
-}
+
 
