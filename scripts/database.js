@@ -63,6 +63,11 @@ export const setGovernor = (governorId) => {
     document.dispatchEvent(new CustomEvent('stateChanged'))
 }
 
+export const setColony = (colonyId) => {
+    database.transientState.selectedColony = colonyId
+    document.dispatchEvent(new CustomEvent('stateChanged'))
+}
+
 export const getFacilities = () => {
     return database.facilities.map(facility => ({ ...facility }))
 }
