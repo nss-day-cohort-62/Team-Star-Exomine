@@ -19,15 +19,12 @@ export const exomine = () => {
     <article class="filterAndColonyStatus">
         <section class="filters">
             ${governorSelection()}
-        </section>
-    <article class="filterFacility">
-        <section class="filters">
             ${facilitySelection()}
         </section>
         <section class="colonyStatus">
-            <h2>ColonyMinerals</h2>
             ${displayOrder()}
         </section>
+    </article>
     </article>
     <article class="mineralsAndCart">
         <section id="mineralSelection">

@@ -4,7 +4,8 @@ import {
   getMinerals,
   getFacilityMinerals,
   getOrders,
-  getColonies
+  getColonies,
+  getGovernors
 } from "./database.js";
 
 const minerals = getMinerals();
@@ -103,36 +104,47 @@ export const displayCart = () => {
 export const displayOrder = () => {
   const transientState = getTransientState()
   const orders = getOrders()
+  const governors = getGovernors()
   let ironCount = 0;
   let saltCount = 0;
   let nickelCount = 0;
   let copperCount = 0;
   let radiumCount = 0;
-  let html = `<ul>`
-  for (const order of orders) {
-    if (order.selectedGovernor === transientState.selectedGovernor) {
-    //   order.selectedMineral === 1 ? ironCount ++
-    // : order.selectedMineral === 2 ? saltCount ++
-    // : order.selectedMineral === 3 ? nickelCount ++
-    // : order.selectedMineral === 4 ? copperCount ++
-    // : order.selectedMineral === 5 ? radiumCount ++
-    // : null
-    if (order.selectedMineral === 1) {
-      ironCount++
-    }
-    if (order.selectedMineral === 2) {
-      saltCount++
-    }
-    if (order.selectedMineral === 3) {
-      nickelCount++
-    }
-    if (order.selectedMineral === 4) {
-      copperCount++
-    }
-    if (order.selectedMineral === 5) {
-      radiumCount++
+  let chosenColony = ""
+  let html = ""
+  for (const colony of colonies) {
+    for (const governor of governors) {
+      if (transientState.selectedGovernor === governor.id && governor.colonyId === colony.id) {
+        chosenColony = colony.name
+      }
     }
   }
+  html += `<h2>${chosenColony} Minerals</h2>`
+  html += `<ul>`
+  for (const order of orders) {
+    if (order.selectedGovernor === transientState.selectedGovernor) {
+      //   order.selectedMineral === 1 ? ironCount ++
+      // : order.selectedMineral === 2 ? saltCount ++
+      // : order.selectedMineral === 3 ? nickelCount ++
+      // : order.selectedMineral === 4 ? copperCount ++
+      // : order.selectedMineral === 5 ? radiumCount ++
+      // : null
+      if (order.selectedMineral === 1) {
+        ironCount++
+      }
+      if (order.selectedMineral === 2) {
+        saltCount++
+      }
+      if (order.selectedMineral === 3) {
+        nickelCount++
+      }
+      if (order.selectedMineral === 4) {
+        copperCount++
+      }
+      if (order.selectedMineral === 5) {
+        radiumCount++
+      }
+    }
   }
   if (ironCount) {
     html += `<li> ${ironCount} tons of iron </li>`
@@ -148,7 +160,7 @@ export const displayOrder = () => {
   }
   if (radiumCount) {
     html += `<li> ${radiumCount} tons of radium </li>`
-  } 
+  }
 
 
   //   ironCount ? html += `<li>${ironCount} tons of iron</li>`
@@ -157,7 +169,15 @@ export const displayOrder = () => {
   // : copperCount ? html += `<li>${copperCount} tons of copper</li>`
   // : radiumCount ? html += `<li>${radiumCount} tons of radium</li>`
   // : null
-  
+
   html += `</ul>`
   return html
 }
+
+
+
+
+export const quantityReduction = () => {
+  const transientState = transientState()
+}
+

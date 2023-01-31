@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+
+
+.filterAndColonyStatus {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.colonyStatus {
+    text-align: center;
+    width: 80%;
+}
+.filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.mineralsAndCart {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+#mineralSelection {
+    border: 2px dotted rgb(90, 25, 25);
+    margin: 5px;
+    width: 70%;
+    padding: 5px 20px 20px 20px;
+    text-align: center;
+}
+
+#cart {
+    border: 2px dotted rgb(43, 55, 115);
+    margin: 5px;
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+#orderButton {
+    background-color: rgb(177, 174, 174);
+    font-family: 'Oswald', sans-serif;
+    padding: 5px;
+    font-size: large;
+    margin: 10px;
+}
+
+#orderButton button {
+    height: 25px;
+}
+
