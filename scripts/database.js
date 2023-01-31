@@ -53,6 +53,8 @@ const database = {
     
 }
 
+
+
 export const setFacility = (facilityId) => {
     database.transientState.selectedFacility = facilityId
     document.dispatchEvent(new CustomEvent("stateChanged"))
@@ -99,11 +101,20 @@ export const getTransientState = () => {
     return database.transientState
 }
 
+const quantityDecrease = (order) => {
+    // const facilityMinerals = getFacilityMinerals();
+    for (const facilityMineral of database.facilityMinerals) {
+      if (order.selectedFacility === facilityMineral.facilityId && order.selectedMineral === facilityMineral.mineralId) {
+        facilityMineral.quantity --
+      }
+    }
+  }
+
 export const addCustomOrder = () => {
     const newOrder = {...database.transientState}
     const lastIndex = database.orders.length - 1
     newOrder.id = database.orders[lastIndex].id + 1
-
+    quantityDecrease(newOrder)
     newOrder.timestamp = Date.now()
     database.orders.push(newOrder)
 

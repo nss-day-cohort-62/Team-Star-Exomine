@@ -14,12 +14,13 @@ document.addEventListener(
 
 
 const minerals = getMinerals()
-const facilityMinerals = getFacilityMinerals()
+// const facilityMinerals = getFacilityMinerals()
 const facilities = getFacilities()
 // const transientState = getTransientState()
 
 
 const facilityMineralMatcher = () => {
+    const facilityMinerals = getFacilityMinerals()
     const transientState = getTransientState()
     let matchedMineralFacility = []
     for (const facilityMineral of facilityMinerals) {
