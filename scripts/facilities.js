@@ -22,7 +22,7 @@ let activeFacilities = []
         }
     }
 
-
+    
 export const facilitySelection = () => {
     const transientState = getTransientState()
     let html = `<h4>Choose a Facility</h4><select class="facility" id="facilityResource">
