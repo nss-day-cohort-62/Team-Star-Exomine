@@ -1,4 +1,4 @@
-import { getFacilities, setFacility, getTransientState } from "./database.js";
+import { getFacilities, setFacility, getTransientState, setMineral } from "./database.js";
 
 const facilities = getFacilities();
 
@@ -10,6 +10,7 @@ document.addEventListener(
             let chooseOption = changeEvent.target.value
             chooseOption = parseInt(chooseOption)
             setFacility(chooseOption)
+            setMineral(null) 
         }
     }
 )
