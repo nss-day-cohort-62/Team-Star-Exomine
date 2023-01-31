@@ -102,11 +102,15 @@ export const addCustomOrder = () => {
     newOrder.timestamp = Date.now()
     database.orders.push(newOrder)
 
-    database.transientState = {}
-   // document.dispatchEvent(new CustomEvent('stateChanged'))
+    database.transientState = {selectedGovernor: newOrder.selectedGovernor, selectedFacility: newOrder.selectedFacility}
+   document.dispatchEvent(new CustomEvent('stateChanged'))
 }
 
 export const setMineral = (mineralId) => {
     database.transientState.selectedMineral = mineralId
     document.dispatchEvent(new CustomEvent('stateChanged'))
+}
+
+export const getOrders = () => {
+    return database.orders.map(order => ({...order}))
 }

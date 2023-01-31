@@ -2,6 +2,7 @@ import { governorSelection } from "./governors.js"
 import { facilitySelection } from "./facilities.js"
 import { availableMinerals } from "./minerals.js"
 import { addCustomOrder } from "./database.js"
+import { displayOrder } from "./orders.js"
 
 document.addEventListener(
     "click",
@@ -33,6 +34,7 @@ export const exomine = () => {
         </section>
         <section id="cart">
             <h3>Space Cart</h3>
+            ${displayOrder()}
             <button id="orderButton">Purchase Minerals</button>
         </section>
     </article>
