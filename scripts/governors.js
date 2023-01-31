@@ -9,6 +9,7 @@ document.addEventListener(
             let chooseOption = changeEvent.target.value
             chooseOption = parseInt(chooseOption)
             setGovernor(chooseOption)
+            
         }
     }
 )
